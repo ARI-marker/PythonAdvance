@@ -28,7 +28,7 @@ if submit_button:
         "User Rating": new_user_rating,
         "Reviews": new_reviews,
         "Price": new_price,
-        "Year": new_year
+        "Year": new_year,
         "Genre": new_genre
     }
 
@@ -76,6 +76,23 @@ st.subheader("Number of Fiction vs Non-Ficition Books Over the Years")
 size = books_df.groupby(['Year','Genre']).size().reset_index(name='Counts')
 fig = px.bar(size, x='Year', y='Counts', color='Genre', title='Number of Fiction vs Non-Fiction from 2009-2022',
              color_discrete_sequence=px.colors.sequential.Plasma, barmode='group')
+st.ploty_chart(fig)
+
+
+st.subheader("Top 15 Authors by counts of books published (2009-2022)")
+top_authors = books_df['Author'].value_counts().head(15).reset_indedx()
+top_authors.columns = ['Author', 'Count']
+fig = px.bar(top_authors, x='Count' , y='Author', orientation='h',
+             title='Top 15 Authors by counts of books published',
+             labels={'Count': 'Count of books published', 'Author': 'Author'},
+             color='Count', color_continuous_scale=px.colors.sequential.Plasma)
+st.ploty_chart(fig)
+
+
+st.subheader("Filter data by genre")
+genre_filter = st.selectbox("Select Genre", books_df['Genre'].unique())
+filtered_df = books_df[books_df['Genre'] == genre_filter]
+st.write(filtered_df)
 
 
 
