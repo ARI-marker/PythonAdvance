@@ -1,0 +1,18 @@
+{
+    "name": "Gerti",
+    "age": 15,
+    "address": {
+        "street": "Pashko Vasa",
+        "city": "Prishtina"
+    },
+    "contact": [
+        {
+            "type": "email",
+            "value": "gerti@gmail.com"
+        },
+        {
+            "type": "phone",
+            "value": "+38344546798"
+        }
+    ]
+}
