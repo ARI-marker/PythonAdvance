@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 class Supplier(BaseModel):
     name: str
-    phone: str
+    phone: int
     email: str
     address: str
 
